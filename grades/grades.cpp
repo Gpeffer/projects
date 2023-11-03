@@ -6,16 +6,15 @@ using namespace std;
 
 double grades[5];
 
-void get_grades() {
+double get_grades() {
     for (int i = 0; i < 5; ++i) {
         cin >> grades[i];
     }
+    return grades[5];
 }
 
-double sum = 0.0;
-double average;
-
-double grade_average(double grades[5]) {
+double get_average(double grades[5]) {
+    double sum = 0.0;
     for (int i = 0; i < 5; ++i){
         sum += grades[i];
     }
@@ -27,13 +26,13 @@ char letter_grade(double average) {
 
     char final_grade;
 
-    if (average <= 80.0) {
+    if (average >= 80.0) {
         final_grade = 'A'; 
     }
-    else if (average <= 60.0) {
+    else if (average >= 60.0) {
         final_grade = 'B';
     }
-    else if (average <= 50.0) {
+    else if (average >= 50.0) {
         final_grade = 'C';
     }
     else {
@@ -44,23 +43,26 @@ char letter_grade(double average) {
 
 int main() {
 
-    double grades[5];
-
     char final_grade;
 
     cout << "Enter your grades: " << endl;
 
-    get_grades();
+    double grades[5];
+
+    for (int i = 0; i < 5; ++i) {
+        cin >> grades[i];
+    }
 
 //    for (int i = 0; i < 5; ++i) {
 //        cout << grades[i] << endl;
 //    }
 
-    double grade_average(double grades);
+    double average = get_average(grades);
+    cout << "Your average score is: " << average << endl;
+    
+    final_grade = letter_grade(average);
 
-    char letter_grade(average);
-
-    cout << final_grade;
+    cout << "Your grade is: " << final_grade << endl;
 
     return 0;
 }
